@@ -1,55 +1,61 @@
-# Augmented Grapevine Disease Classification with CNN & Streamlit Web App
+# Augmented Grapevine Disease Classification with Custom CNN & MobileNetV2
 
-This project builds a Convolutional Neural Network (CNN) using TensorFlow/Keras to detect and classify grapevine leaf diseases (such as Black Rot, Esca, Leaf Blight, and Healthy leaves) and deploys the trained model via an interactive Streamlit web application.
-
-The primary goal of this repository is to demonstrate how to train a high-accuracy computer vision model on plant disease images while maintaining memory efficiency and providing an intuitive UI for real-time predictions.
+An end-to-end Computer Vision project to detect and classify grapevine leaf diseases using Custom CNN and **MobileNetV2 Transfer Learning**, deployed via an interactive Streamlit web application.
 
 ---
 
-## Key Features
+## Project Overview
 
-* **Memory-Efficient Data Loading:** Uses tf.data.Dataset pipelines to stream and preprocess images without overloading system RAM.
-* **Fast Training:** Optimized image resizing and batching for smooth execution.
-* **High Performance:** Reaches high classification accuracy across all disease classes on the validation set.
-* **Visual Evaluation:** Includes training curve plots and a clear confusion matrix to analyze model performance.
-* **Interactive Web Interface:** User-friendly Streamlit interface to upload grapevine leaf images and retrieve immediate disease predictions with confidence scores.
+This repository evaluates custom convolutional layers against pre-trained **MobileNetV2 Transfer Learning** feature representations to identify plant pathology conditions, maintaining high diagnostic accuracy and memory efficiency.
+
+* **Dataset:** Augmented Grapevine Disease Dataset
+* **Architectures:** Custom CNN & MobileNetV2 Transfer Learning
+* **Task Type:** Multi-Class Classification (4 Classes)
+* **Deployment:** Streamlit Web Application
 
 ---
 
 ## Performance & Results
 
-* **Classes:** Black Rot, Esca (Black Measles), Leaf Blight (Isariopsis Leaf Spot), Healthy
-* **Evaluation:** High precision and recall across all plant pathology classes.
+| Architecture | Training Accuracy | Validation Accuracy | Validation Loss |
+| :--- | :--- | :--- | :--- |
+| **Custom CNN** | ~97.10% | 97.70% | ~0.0820 |
+| **MobileNetV2 (Transfer Learning)** | **99.05%** | **99.25%** | **0.0255** |
+
+* **Classes (4):** Black Rot, Esca (Black Measles), Leaf Blight (Isariopsis Leaf Spot), Healthy
+* **Loss Function:** `sparse_categorical_crossentropy`
 
 ---
 
-## Tech Stack & Libraries
+## Key Features
+
+* **Dual Architecture Comparison:** Benchmarks a custom CNN against pre-trained **MobileNetV2** representations.
+* **Memory-Efficient Data Streaming:** Uses `tf.data.Dataset` pipelines with `.cache()` and `.prefetch()` to manage system RAM effectively.
+* **Regularization:** Incorporates Dropout (0.3) layers to prevent overfitting.
+* **Interactive UI:** Streamlit interface for uploading grapevine leaf scans and obtaining immediate diagnostic predictions with confidence scores.
+
+---
+
+## Tech Stack
 
 * **Python 3.x**
 * **TensorFlow / Keras**
 * **Streamlit**
-* **NumPy**
-* **Pillow (PIL)**
-* **Matplotlib & Seaborn**
-* **Scikit-learn**
+* **Pillow (PIL) & NumPy**
+* **Matplotlib, Seaborn, Scikit-Learn**
 
 ---
 
-## Dataset
+## Dataset Structure
 
-The project utilizes the Augmented Grapevine Disease Dataset featuring images of healthy and diseased grapevine leaves across multiple categories.
-
-* Data splits: 80% Training, 20% Validation
-* Input image resolution: 128 x 128 x 3
+* **Split Ratio:** 80% Training, 20% Validation
+* **Target Resolution:** 128 x 128 x 3 (RGB)
 
 ---
 
-## Web Application Setup
+## Running the Web App Locally
 
-To run the Streamlit application locally:
-
-1. Save your trained model as `grapevine_model.keras` in the project root directory.
-2. Run the Streamlit app:
-
-```bash
-streamlit run app.py
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/grapevine-disease-classification.git](https://github.com/your-username/grapevine-disease-classification.git)
+   cd grapevine-disease-classification
